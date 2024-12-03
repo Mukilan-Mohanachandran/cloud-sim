@@ -19,7 +19,10 @@ def get_coordinates():
     data = {
         "value": [['vm1' ],['vm3', 'vm4'],['vm5', 'vm6' ]]
     }
-    return data
+    data1 = {
+        "value": [{'cluster_id': 0, 'points': [['vm1', '1.0', '2.0'], ['vm2', '2.0', '3.0']]}, {'cluster_id': 1, 'points': [['vm3', '10.0', '10.0'], ['vm4', '11.0', '11.0']]}]
+    }
+    return data1
 
 @app.get("/get-data")
 async def get_data():
