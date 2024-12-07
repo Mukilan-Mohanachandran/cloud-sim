@@ -1,7 +1,7 @@
 from sklearn.cluster import KMeans
 import numpy as np
 
-def cluster_data(data, n_clusters):
+def kmeans_cluster(data, n_clusters):
     """
     Clusters an array of arrays [id, x, y] using K-means clustering.
     
@@ -36,16 +36,17 @@ def cluster_data(data, n_clusters):
     
     return clusters
 
-# Example usage
-data = [
-    ['vm1', 1.0, 2.0],
-    ['vm2', 2.0, 3.0],
-    ['vm3', 10.0, 10.0],
-    ['vm4', 11.0, 11.0]
-]
+# # Example usage
+# data = [
+#     ['vm1', 1.0, 2.0],
+#     ['vm2', 2.0, 3.0],
+#     ['vm3', 10.0, 10.0],
+#     ['vm4', 11.0, 11.0]
+# ]
 
-n_clusters = 2
-result = cluster_data(data, n_clusters)
-print(result)
+# n_clusters = 2
+# result = kmeans_cluster(data, n_clusters)
+# print(result)
+
 # for cluster in result:
 #     print(f"Cluster {cluster['cluster_id']}: {cluster['points']}")

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import VMComponent from '../PhysicalComponents/VM/VMComponent';
 import ClusterBox from '../LoadBalance/ClusterBox';
+import VMInputForm from './VMInputForm';
 
 import {VMComponentProps} from '../PhysicalComponents/VM/VMComponent';
 
@@ -62,16 +63,20 @@ const LoadBalance = ()=>{
         
     ]
     return(
-        <div> Load Balancing Test
-            <div className='border-black rounded-[30px] border-2 p-4 m-4 overflow-scroll h-[800px] w-[1080px]'> 
+        <div> 
+          <div className='flex flex-row columns-2 p-8'>
+         <div className='border-black rounded-[30px] border-2 p-4 m-4 overflow-scroll h-[800px] w-[540px]'>
+         <VMInputForm />
+         </div>
+        
+        <div className='border-black rounded-[30px] border-2 p-4 m-4 overflow-scroll h-[800px] w-[1080px]'> 
             {clusterData.map((propsArr, index) => (
           <ClusterBox key={index} {...propsArr} />
         ))}
             </div>
-            
-            
+
+          </div>
         </div>
     )
 }
-
 export default LoadBalance;

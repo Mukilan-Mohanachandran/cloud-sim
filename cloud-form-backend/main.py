@@ -3,7 +3,10 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# from pydantic import BaseModel
+from pydantic import BaseModel
+from typing import List, Union
+
+from cluster_logics.cluster import kmeans_cluster
 
 app = FastAPI()
 
@@ -29,3 +32,17 @@ async def get_data():
     # Define the dictionary to be returned
     response_data = get_coordinates()
     return response_data
+
+class DataModel(BaseModel):
+    cluster_method: str
+    data: List[List[Union[str, float]]]
+
+@app.post("/cluster-data")
+async def post_data(payload: DataModel):
+    # Print the received data
+    method = payload.cluster_method
+    data = payload.data
+    result = kmeans_cluster(data, 2)
+    print("Received data:", result, method)
+    # Return a simple response confirming receipt
+    return {"status": "Data received successfully", "clusters": result}
